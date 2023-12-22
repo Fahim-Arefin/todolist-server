@@ -3,9 +3,9 @@ const app = express();
 const axios = require("axios");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const Task = require("./models/Task");
 const Ongoing = require("./models/ongoing");
 const Completed = require("./models/completed");
+const Task = require("./models/task");
 require("dotenv").config();
 const port = process.env.PORT || 5000;
 
@@ -26,17 +26,7 @@ mongoose
 // -------------------------------------------------------------------------------------------------------------------
 
 // middleware
-// app.use(cors());
-app.use(
-  cors({
-    // origin: ["http://localhost:5173"],
-    origin: [
-      "https://todolistwithdnd.web.app",
-      "https://todolistwithdnd.firebaseapp.com",
-    ],
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 //server
