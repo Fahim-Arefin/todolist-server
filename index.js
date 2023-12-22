@@ -168,3 +168,37 @@ app.put("/completed", async (req, res) => {
 });
 
 // -------------------------------------------------------------------------------------------------------------------
+
+app.patch("/tasks/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const body = req.body;
+    await Task.findByIdAndUpdate(id, body);
+    res.send("reordered succeessfully");
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+app.patch("/ongoing/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const body = req.body;
+    await Ongoing.findByIdAndUpdate(id, body);
+    res.send("reordered succeessfully");
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+app.patch("/completed/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const body = req.body;
+    const response = await Completed.findByIdAndUpdate(id, body);
+    res.send(response);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
