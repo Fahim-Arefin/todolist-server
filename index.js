@@ -26,7 +26,17 @@ mongoose
 // -------------------------------------------------------------------------------------------------------------------
 
 // middleware
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    // origin: ["http://localhost:5173"],
+    origin: [
+      "https://todolistwithdnd.web.app",
+      "https://todolistwithdnd.firebaseapp.com",
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 //server
